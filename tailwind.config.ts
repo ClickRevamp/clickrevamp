@@ -25,10 +25,19 @@ const config: Config = {
   				'100%': {
   					opacity: '100%'
   				}
-  			}
+  			},
+        gradientSpin: {
+          '0%': {
+            transform: 'translateX(-50%) rotate(0deg)'
+          },
+          '100%': {
+            transform: 'translateX(-50%) rotate(360deg)'
+          }
+        }
   		},
   		animation: {
-  			appear: 'appear 300ms ease-out forwards'
+  			appear: 'appear 300ms ease-out forwards',
+        gradientSpin: 'gradientSpin 20s linear infinite'
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
