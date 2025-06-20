@@ -1,99 +1,165 @@
 'use client'
 
-import { useInViewAnimation } from '@/hooks/useInViewAnimation';
-import { Space_Grotesk } from 'next/font/google';
-import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import { Button } from "@/components/ui/button";
-import { heroElementVariants, transitions } from '@/utils/animations';
+import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { ArrowRight, Sparkles } from 'lucide-react'
+import Link from 'next/link'
 
-const spaceGrotesk = Space_Grotesk({ 
-  subsets: ['latin'],
-  display: 'swap',
-  weight: ['400', '500', '600', '700'],
-});
+const textVariations = [
+  "World-Class AI Sites",
+  "Premium Web Designs", 
+  "Conversion-Focused Sites",
+  "Modern Web Experiences"
+]
+
+const clientLogos = [
+  "Stripe", "Notion", "Linear", "Vercel", "Figma", "GitHub"
+]
 
 export default function HeroSection() {
-  const { ref, isVisible } = useInViewAnimation();
-  const [isClientSide, setIsClientSide] = useState(false);
+  const [currentTextIndex, setCurrentTextIndex] = useState(0)
 
+  // Text switching effect
   useEffect(() => {
-    setIsClientSide(true);
-  }, []);
-
-  const scrollToContactForm = () => {
-    document.getElementById('contact-form')?.scrollIntoView({ 
-      behavior: 'smooth',
-      block: 'center',
-      inline: 'nearest'
-    });
-  };
+    const interval = setInterval(() => {
+      setCurrentTextIndex((prev) => (prev + 1) % textVariations.length)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
-    <section 
-      className={`py-24 px-8 relative bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white via-slate-50 to-transparent transition-opacity duration-700 ${isVisible ? 'fade-in-up' : 'opacity-0'}`}
-      ref={ref}
-    >
-      <div className="absolute inset-0 bg-grid-pattern opacity-[0.02] pointer-events-none"></div>
-      <div className="hero-glow pointer-events-none"></div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        {/* Gradient Blob - Adjusted for better positioning behind heading */}
-        <div
-          className="absolute top-[10%] left-1/2 z-0 h-[400px] w-[400px] -translate-x-1/2 rounded-full bg-[conic-gradient(at_top_right,_#FF6EC4_10%,_#7873F5_35%,_#4ADEDE_60%,_#C084FC_85%,_#F472B6)] opacity-20 blur-3xl animate-gradientSpin pointer-events-none"
-        />
-        
+    <section className="relative min-h-screen flex items-center justify-center bg-[#0c0c0c] overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-[#e6ff00]/10 via-[#00ff95]/5 to-transparent rounded-full blur-3xl" />
+        <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-gradient-radial from-[#00ff95]/8 to-transparent rounded-full blur-2xl" />
+      </div>
+
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,black,transparent)]" />
+
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 text-center">
+        {/* Main Headline */}
         <motion.div 
-          initial={isClientSide ? heroElementVariants.hidden : false}
-          animate={isClientSide ? heroElementVariants.visible : {}}
-          transition={transitions.fadeIn}
-          className="inline-flex items-center px-6 py-2 text-sm md:text-base font-medium text-primary mb-8 glimmer-pill bg-accent/40 border border-primary/20 shadow-[0_0_15px_rgba(0,32,115,0.1)]"
+          className="mb-8"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span className="font-medium">Modern Website Redesign Service</span>
-        </motion.div>
-        
-        <motion.h1 
-          initial={isClientSide ? heroElementVariants.hidden : false}
-          animate={isClientSide ? heroElementVariants.visible : {}}
-          transition={{ ...transitions.fadeIn, delay: 0.2 }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight text-[#111827] [text-shadow:_0_1px_2px_rgba(0,0,0,0.08)]"
-        >
-          Your Website Is <span className="bg-clip-text text-transparent [background-clip:text] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] bg-gradient-to-r from-[#2563EB] to-[#6366F1]">Costing<br />You Customers</span>
-        </motion.h1>
-        
-        <motion.p 
-          initial={isClientSide ? heroElementVariants.hidden : false}
-          animate={isClientSide ? heroElementVariants.visible : {}}
-          transition={{ ...transitions.fadeIn, delay: 0.4 }}
-          className="text-base md:text-lg leading-relaxed max-w-2xl text-center mx-auto mt-4 mb-12 text-gray-700"
-        >
-          We transform outdated websites into modern, high-converting experiences — without the agency price tag.
-        </motion.p>
-        
-        <div className="relative z-20">
-          <Button 
-            size="lg" 
-            className="rounded-full bg-gradient-to-r from-[#1E3A8A] to-[#3B82F6] hover:from-[#1E3A8A] hover:to-[#2563EB] px-6 sm:px-8 md:px-10 py-5 sm:py-6 md:py-7 text-base md:text-lg font-bold transition-all duration-300 hover:scale-[1.02] shadow-md hover:shadow-lg text-white relative z-20"
-            onClick={scrollToContactForm}
-          >
-            Get a Free Redesign Preview
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              width="20" 
-              height="20" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              className="ml-2 inline-block transform transition-transform duration-300 group-hover:translate-x-1"
+          <div className="flex flex-col items-center space-y-4">
+            {/* Animated text switcher */}
+            <div className="h-[120px] md:h-[140px] flex items-center justify-center">
+              <motion.h1 
+                key={currentTextIndex}
+                className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight"
+                initial={{ opacity: 0, y: 20, filter: "blur(8px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                exit={{ opacity: 0, y: -20, filter: "blur(8px)" }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {textVariations[currentTextIndex]}
+              </motion.h1>
+            </div>
+            
+            {/* Static part */}
+            <motion.h2 
+              className="text-5xl md:text-7xl lg:text-8xl font-bold text-gradient leading-tight"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             >
-              <path d="M5 12h14"></path>
-              <path d="m12 5 7 7-7 7"></path>
-            </svg>
-          </Button>
-        </div>
+              That Convert
+            </motion.h2>
+          </div>
+        </motion.div>
+
+        {/* Subtitle */}
+        <motion.p 
+          className="text-xl md:text-2xl text-[#999999] max-w-3xl mx-auto mb-12 leading-relaxed"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+        >
+          We redesign your website to drive more conversions, bookings, and sales. 
+          <span className="text-white"> No templates. No compromises.</span>
+        </motion.p>
+
+        {/* CTA Button */}
+        <motion.div 
+          className="mb-20"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <Link 
+            href="#contact"
+            className="group inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#e6ff00] to-[#00ff95] text-black font-bold text-lg rounded-full hover:shadow-[0_0_40px_rgba(230,255,0,0.4)] hover:scale-105 transition-all duration-300"
+          >
+            <Sparkles className="w-5 h-5" />
+            Start Your Redesign
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+          </Link>
+        </motion.div>
+
+        {/* Client Showcase */}
+        <motion.div 
+          className="space-y-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <p className="text-sm text-[#666666] uppercase tracking-wider font-medium">
+            Trusted by leading companies
+          </p>
+          
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 opacity-40">
+            {clientLogos.map((logo, index) => (
+              <motion.div
+                key={logo}
+                className="text-2xl md:text-3xl font-bold text-white/60 hover:text-white/80 transition-colors duration-300"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
+              >
+                {logo}
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Scroll Indicator */}
+        <motion.div 
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+        >
+          <motion.div 
+            className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center"
+            animate={{ 
+              y: [0, 8, 0],
+            }}
+            transition={{ 
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            <motion.div 
+              className="w-1 h-3 bg-gradient-to-b from-[#e6ff00] to-[#00ff95] rounded-full mt-2"
+              animate={{
+                height: [12, 6, 12],
+                opacity: [1, 0.5, 1]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            />
+          </motion.div>
+        </motion.div>
       </div>
     </section>
-  );
+  )
 } 

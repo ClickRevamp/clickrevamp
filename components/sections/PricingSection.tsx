@@ -60,7 +60,7 @@ export default function PricingSection() {
 
   return (
     <section 
-      className="py-24 px-8 border-t border-gray-100 relative bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-gray-50 to-gray-100"
+      className="scroll-mt-28 py-24 px-8 border-t border-gray-100 relative bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-gray-50 to-gray-100"
       ref={ref}
       id="pricing"
     >

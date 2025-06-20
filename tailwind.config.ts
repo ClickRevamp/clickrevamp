@@ -12,11 +12,11 @@ const config: Config = {
   		backgroundImage: {
   			'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
   			'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'dotted-grid': 'radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.15) 2px, transparent 0)',
+  			'dotted-grid': 'radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.15) 2px, transparent 0)'
   		},
-      backgroundSize: {
-        'dotted-grid': '32px 32px',
-      },
+  		backgroundSize: {
+  			'dotted-grid': '32px 32px'
+  		},
   		keyframes: {
   			appear: {
   				'0%': {
@@ -26,18 +26,18 @@ const config: Config = {
   					opacity: '100%'
   				}
   			},
-        gradientSpin: {
-          '0%': {
-            transform: 'translateX(-50%) rotate(0deg)'
-          },
-          '100%': {
-            transform: 'translateX(-50%) rotate(360deg)'
-          }
-        }
+  			gradientSpin: {
+  				'0%': {
+  					transform: 'translateX(-50%) rotate(0deg)'
+  				},
+  				'100%': {
+  					transform: 'translateX(-50%) rotate(360deg)'
+  				}
+  			}
   		},
   		animation: {
   			appear: 'appear 300ms ease-out forwards',
-        gradientSpin: 'gradientSpin 20s linear infinite'
+  			gradientSpin: 'gradientSpin 20s linear infinite'
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

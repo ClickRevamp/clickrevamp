@@ -41,7 +41,7 @@ const formFields = [
   { 
     id: 'message', 
     type: 'textarea', 
-    placeholder: "Tell us what you'd like help with…", 
+    placeholder: "Tell us what you&apos;d like help with…", 
     gridSpan: 'md:col-span-2',
     required: false, 
     rows: 4 
@@ -64,10 +64,10 @@ export default function ContactSection() {
           <SectionHeader
             title={
               <>
-                Let's Talk About Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FFC300] to-[#F17CA2] [background-clip:text] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">Redesign</span>
+                Let&apos;s Talk About Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#FFC300] to-[#F17CA2] [background-clip:text] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">Redesign</span>
               </>
             }
-            description="Send us your current site — we'll show you a free redesign preview."
+            description="Send us your current site — we&apos;ll show you a free redesign preview."
             animated={true}
             showAnimation={isVisible}
           />

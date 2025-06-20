@@ -1,17 +1,17 @@
-import { Variants } from 'framer-motion';
+import { Variants, Easing } from 'framer-motion';
 
 // -----------------------------------------------------
 // COMMON TRANSITION SETTINGS
 // -----------------------------------------------------
 export const transitions = {
-  fadeIn: { duration: 0.7, ease: "easeOut" },
-  springBounce: { type: "spring", stiffness: 300, damping: 30 },
-  hoverSpring: { type: "spring", stiffness: 300 },
-  buttonHover: { duration: 0.3, ease: "easeOut" },
-  iconScale: { duration: 0.6, ease: "easeOut" },
+  fadeIn: { duration: 0.7, ease: [0.4, 0.0, 0.2, 1] as Easing },
+  springBounce: { type: "spring" as const, stiffness: 300, damping: 30 },
+  hoverSpring: { type: "spring" as const, stiffness: 300 },
+  buttonHover: { duration: 0.3, ease: [0.4, 0.0, 0.2, 1] as Easing },
+  iconScale: { duration: 0.6, ease: [0.4, 0.0, 0.2, 1] as Easing },
   stagger: { staggerChildren: 0.1, delayChildren: 0.2 },
-  soft: { duration: 0.5, ease: [0.34, 1.56, 0.64, 1] },
-  bounce: { type: "spring", stiffness: 300, damping: 15 },
+  soft: { duration: 0.5, ease: [0.34, 1.56, 0.64, 1] as Easing },
+  bounce: { type: "spring" as const, stiffness: 300, damping: 15 },
 };
 
 // -----------------------------------------------------
@@ -120,17 +120,6 @@ export const featureIconVariants: Variants = {
   },
 };
 
-// Testimonial carousel animations
-export const testimonialCardVariants = (position: number) => ({
-  animate: {
-    x: `${position * 60}%`,
-    scale: position === 0 ? 1 : 0.92,
-    opacity: position === 0 ? 1 : 0.7,
-    zIndex: 10 - Math.abs(position),
-    filter: `blur(${position === 0 ? 0 : 1}px)`,
-  },
-});
-
 // Icon animations in How It Works section
 export const iconContainerVariants = {
   hidden: { opacity: 0, scale: 0.8 },
@@ -148,7 +137,7 @@ export const eyeIconVariants = {
     transition: {
       duration: 4,
       times: [0, 0.1, 0.9, 1],
-      ease: "easeInOut",
+      ease: [0.4, 0.0, 0.2, 1] as Easing,
       repeat: animate ? Infinity : 0,
       repeatDelay: 8,
       repeatType: "loop" as const,
@@ -164,7 +153,7 @@ export const eyePupilVariants = {
     transition: {
       duration: 3,
       times: [0, 0.3, 0.6, 0.9],
-      ease: "easeInOut",
+      ease: [0.4, 0.0, 0.2, 1] as Easing,
       repeat: animate ? Infinity : 0,
       repeatDelay: 9,
       repeatType: "loop" as const,
@@ -181,7 +170,7 @@ export const layoutIconRectVariants = {
     pathLength: animate ? [0, 1, 1, 0] : 0,
     transition: {
       duration: 4,
-      ease: "easeInOut",
+      ease: [0.4, 0.0, 0.2, 1] as Easing,
       repeat: animate ? Infinity : 0,
       times: [0, 0.2, 0.8, 1],
       delay: 4,
@@ -199,7 +188,7 @@ export const layoutIconHorizLineVariants = {
     y: animate ? [5, 0, 0, 5] : 5,
     transition: {
       duration: 4,
-      ease: "easeInOut",
+      ease: [0.4, 0.0, 0.2, 1] as Easing,
       repeat: animate ? Infinity : 0,
       times: [0.1, 0.3, 0.75, 0.95],
       delay: 4,
@@ -217,7 +206,7 @@ export const layoutIconVertLineVariants = {
     x: animate ? [-2, 0, 0, -2] : -2,
     transition: {
       duration: 4,
-      ease: "easeInOut",
+      ease: [0.4, 0.0, 0.2, 1] as Easing,
       repeat: animate ? Infinity : 0,
       times: [0.2, 0.4, 0.7, 0.9],
       delay: 4,
@@ -235,7 +224,7 @@ export const checkCircleVariants = {
     pathLength: animate ? [0, 1, 1, 0] : 0,
     transition: {
       duration: 4,
-      ease: "easeInOut",
+      ease: [0.4, 0.0, 0.2, 1] as Easing,
       repeat: animate ? Infinity : 0,
       times: [0, 0.2, 0.8, 1],
       delay: 8,
@@ -252,7 +241,7 @@ export const checkmarkVariants = {
     pathLength: animate ? [0, 1, 1, 0] : 0,
     transition: {
       duration: 4,
-      ease: "easeInOut",
+      ease: [0.4, 0.0, 0.2, 1] as Easing,
       repeat: animate ? Infinity : 0,
       times: [0.15, 0.35, 0.75, 0.95],
       delay: 8,
@@ -305,20 +294,13 @@ export const formControlVariants: Variants = {
   }
 };
 
-// Comparison section animations
-export const comparisonRowVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
-  hover: { backgroundColor: "rgba(59, 130, 246, 0.05)" }
-};
-
 // Section header animations
 export const sectionHeaderVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: { 
     opacity: 1, 
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
+    transition: { duration: 0.6, ease: [0.4, 0.0, 0.2, 1] as Easing }
   }
 };
 
@@ -362,7 +344,7 @@ export const scrollAnimationVariant = (
       opacity: 1, 
       x: 0, 
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
+      transition: { duration: 0.6, ease: [0.4, 0.0, 0.2, 1] as Easing }
     }
   };
 }; 

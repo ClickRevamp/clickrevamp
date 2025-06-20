@@ -1,0 +1,71 @@
+{
+    "name": "ClickRevamp 2.0",
+    "mode": "dark",
+    "aesthetic": "modern, premium, bold",
+    "background": "#0c0c0c",
+    "fontFamily": "Inter, sans-serif",
+    "text": {
+      "primary": "#ffffff",
+      "muted": "#999999",
+      "highlight": "linear-gradient(to right, #e6ff00, #00ff95)"
+    },
+    "header": {
+      "style": "minimal topbar",
+      "navAlignment": "center",
+      "buttons": ["CREATE", "REVAMP", "AUTOMATE"],
+      "cta": {
+        "label": "Let's Chat",
+        "style": "glowing button",
+        "position": "top right"
+      }
+    },
+    "hero": {
+      "layout": "centered headline with subtext",
+      "headline": "World-Class AI Sites That Convert",
+      "effect": "text flip / switch (like Sharpen AI)",
+      "cursorEffect": "glowing radial gradient on hover",
+      "button": {
+        "label": "Start Your Redesign",
+        "style": "neon lime / gradient glowing button"
+      },
+      "showcase": {
+        "logos": true,
+        "clients": "monochrome / grayscale"
+      }
+    },
+    "animations": {
+      "entrance": "fade + slight upward motion",
+      "text": "gradient shimmer or switch",
+      "cursor": "blob follows mouse (subtle blend mode)"
+    },
+    "sections": {
+      "features": {
+        "layout": "3 cards (icon + title + text)",
+        "style": "floating panels with backdrop blur",
+        "icons": "line icons, duotone or neon accent"
+      },
+      "testimonials": {
+        "layout": "3D carousel",
+        "centerCard": "zoomed, full-color",
+        "sideCards": "blurred, smaller"
+      },
+      "pricing": {
+        "columns": 3,
+        "highlight": "middle plan",
+        "badges": "New, Most Popular",
+        "style": "glassmorphism + gradient borders"
+      },
+      "footer": {
+        "background": "#000000",
+        "text": "#888888",
+        "links": "inline + social icons"
+      }
+    },
+    "designNotes": [
+      "Avoid overused blue gradients",
+      "Use white/grainy backgrounds only in contrast zones",
+      "Emphasize clarity, spacing, and readability",
+      "Motion should feel fluid and intentional, not jarring"
+    ]
+  }
+  

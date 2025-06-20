@@ -42,7 +42,7 @@ export default function HowItWorksSection() {
 
   return (
     <section 
-      className={`py-24 px-8 border-t border-gray-100 bg-gray-50 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-gray-50 to-gray-100 transition-opacity duration-700 ${isVisible ? 'fade-in-up' : 'opacity-0'}`} 
+      className={`scroll-mt-28 py-24 px-8 border-t border-gray-100 bg-gray-50 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-gray-50 to-gray-100 transition-opacity duration-700 ${isVisible ? 'fade-in-up' : 'opacity-0'}`} 
       ref={ref} 
       id="how-it-works"
     >
@@ -105,7 +105,7 @@ export default function HowItWorksSection() {
               </div>
             </div>
             <h3 className={`text-lg md:text-xl font-bold mb-3 ${spaceGrotesk.className} font-sans text-gray-900`}>We Review Your Site</h3>
-            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed font-mono">Share your current website. We'll audit it and highlight what's holding it back.</p>
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed font-mono">Share your current website. We&apos;ll audit it and highlight what&apos;s holding it back.</p>
           </motion.div>
 
           {/* Step 2 */}

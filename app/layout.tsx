@@ -51,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
         <link rel="icon" type="image/x-icon" sizes="32x32" href="/favicon.ico" />
         <link rel="icon" type="image/x-icon" sizes="16x16" href="/favicon.ico" />

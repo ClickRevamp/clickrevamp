@@ -1,0 +1,134 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# 🧠 `ui_styleguide.mdc` – ClickRevamp Design Brain
+
+Modular design system reference combining Material 3 expressive typography, padding logic, UX laws, and variable font control — for use in Cursor or any design-to-dev handoff.
+
+---
+
+## 🎨 Typography System
+
+### Fonts
+Use **Roboto Flex** (preferred), Roboto Serif, or Roboto Mono with the following variable axes:
+- `weight`: controls thickness
+- `grade`: optical weight (subtle visual weight)
+- `width`: horizontal stretch of characters
+- `slant`: italic behavior
+- `optical size`: adjusts detail/resolution based on size
+
+### Roles
+Define every text block by one of five roles:
+| Role      | Use Case                               | Notes |
+|-----------|----------------------------------------|-------|
+| `Display` | Large screens / marketing hero         | Use expressive/handwritten for emotional pull |
+| `Headline`| Short, high-emphasis lines             | Great for section titles, overlays |
+| `Title`   | Medium importance, compact layout      | Good for cards, modals |
+| `Body`    | Paragraphs, readable at all sizes      | Avoid decorative fonts |
+| `Label`   | Small UI like buttons, captions        | Prioritize clarity over style |
+
+---
+
+## ✍️ Typesetting Rules
+
+### Padding & Bounding
+- Text sits inside a bounding box based on `line-height`
+- Use **even vertical padding** inside the box (e.g. `center` alignment)
+- Use **fixed spacing values** from edge to text container:
+  ```
+  Label → 16px
+  Title → 16px
+  Body → 20px (line height)
+  ```
+
+### Baseline Method
+- Android/text-native layouts rely on **baseline spacing**
+- Measure from the baseline of one text element to another
+- Good for typographic precision across platforms
+
+---
+
+## ⚙️ Font Axis Control
+
+| Axis        | Usage Tips |
+|-------------|------------|
+| **Weight**  | Use lighter for elegant UIs, bolder for attention |
+| **Grade**   | Adjust between dark/light mode (e.g. dark = -100) |
+| **Width**   | Use narrow width for space-constrained UIs |
+| **Optical** | Large optical size = hero headings, small = body |
+| **Slant**   | Avoid overuse in utility text (okay in editorial) |
+
+---
+
+## 🧪 Editorial Treatments (Advanced)
+
+Use dynamic, type-driven editorial sections to:
+1. **Celebrate content** (e.g. welcome screen, album cover)
+2. **Show user emotion** (e.g. text bubbles with impact fonts)
+3. **Frame functionality** (e.g. visually enhance brightness control)
+
+> Best practices:
+- Be consistent with style tokens
+- Match emotion to type style
+- Don’t mix styles in one block
+- Don’t mimic user theming randomly
+
+---
+
+## ♿ Accessibility & Contrast
+
+- **Large text** needs 3:1 contrast
+- **Small text** needs 4.5:1
+- Use `on-surface` or `on-surface-variant` as text base
+- Hyperlinks must be underlined and colored `primary` or `tertiary`
+
+---
+
+## 🧠 UX Laws (Core Principles)
+
+> Use these to improve flow, reduce friction, and design decision-making.
+
+- **Hick’s Law** – Minimize visible choices for speed
+- **Jakob’s Law** – Match user expectations from other products
+- **Miller’s Law** – Don’t overload working memory (chunk info)
+- **Peak-End Rule** – End strong, not just start strong
+- **Zeigarnik Effect** – Show incomplete actions to draw return
+- **Fitts’s Law** – Make key actions large and easy to reach
+- **Occam’s Razor** – Simpler UI > complex unless justified
+- **Tesler’s Law** – Complexity must exist; shift it to code, not UI
+- **Prägnanz** – Group elements to help users understand quickly
+
+---
+
+## ✅ DOs & DON'Ts (Condensed)
+
+- ✅ Use padding + baseline together for legibility
+- ✅ Choose optical sizes based on usage context
+- ✅ Customize weight/grade/width to create hierarchy
+- ⚠️ Don’t use expressive fonts for body text
+- ⚠️ Don’t use bold styles at small font sizes
+- ⚠️ Don’t apply multiple editorial styles in one area
+
+---
+
+## 📦 Tokens & Spacing Suggestions (optional)
+
+```
+--font-display: 'Roboto Flex', weight: 900, size: 60pt
+--font-title:   'Roboto Flex', weight: 700, size: 24pt
+--font-body:    'Roboto Flex', weight: 400, size: 16pt
+--font-label:   'Roboto Flex', weight: 500, size: 12pt
+
+--space-xs: 4px
+--space-sm: 8px
+--space-md: 16px
+--space-lg: 24px
+--radius-md: 12px
+```
+
+---
+
+Ready to inject into Cursor or reuse in any Framer-inspired system. Next: visual_refs.md

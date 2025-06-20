@@ -1,0 +1,217 @@
+---
+description: Guide for using Task Master to manage task-driven development workflows
+globs: **/*
+alwaysApply: true
+---
+---
+description: 
+globs: 
+alwaysApply: false
+---
+
+---
+description: Updated development workflow for Cursor + TaskMaster-based projects, using MCP + CLI hybrid model.
+globs: [.cursor/rules/dev_workflow.mdc]
+alwaysApply: false
+---
+
+# ⚙️ TaskMaster Dev Workflow — Supercharged
+
+This file defines the modern, AI-integrated development workflow used in the ClickRevamp system.
+
+## 🚀 Modes of Operation
+
+### ✅ MCP Server (Recommended)
+
+- Primary interface for agents and tools (e.g., Cursor + background agents)
+- Tools = `get_tasks`, `add_subtask`, `expand_task`, etc.
+- Benefits:
+  - Structured responses
+  - Better memory handling
+  - Robust error reporting
+- MCP tools mirror CLI commands. Full list in: `@taskmaster.mdc`
+
+> 🔁 Restart MCP if core logic or `tools/` change
+
+### 🧑‍💻 CLI (Fallback / Manual)
+
+- `npx task-master-ai <command>`
+- Global install: `npm i -g task-master-ai`
+- Good for manual control, debugging, or outside-Cursor dev
+- See CLI ↔ MCP tool mappings in: `@taskmaster.mdc`
+
+---
+
+## 📋 Core Workflow Steps
+
+> Suggested session flow when starting a new project or task cycle.
+
+```txt
+1. Initialize:       task-master init
+2. Parse PRD:        task-master parse-prd --input="example_prd.txt"
+3. List Tasks:       task-master list
+4. Next Task:        task-master next
+5. Show Details:     task-master show 3.1
+6. Expand Task:      task-master expand --id=3 --research --force
+7. Add Subtask:      task-master add-subtask --parent=3 --title="..."
+8. Set Status:       task-master set-status --id=3.1 --status=done
+```
+
+- 🧠 Always log insights via `update_subtask` when progress is made
+- 🧪 See `@cursor_rules.mdc` for formatting rules
+- 💬 Add reasoning, diffs, decisions (not just output)
+
+---
+
+## 📦 Task Structure
+
+Every task in `tasks/` uses this shape:
+
+```ts
+{
+  id: "2.1",
+  title: "Refactor CarFilter to use dynamic CMS enums",
+  status: "pending" | "in-progress" | "done" | "deferred",
+  dependencies: ["1", "1.2"],
+  priority: "medium",
+  description: "...",
+  details: "...",
+  testStrategy: "...",
+  subtasks: [...]
+}
+```
+
+> 🔗 Dependency & status indicators are visualized inline in `task-master list`
+
+---
+
+## 🧠 Task Planning & Drift
+
+### 📊 Analyze Complexity
+
+```bash
+task-master analyze-complexity --research
+task-master complexity-report
+```
+
+Use before `expand`. Focus first on highest complexity items (8-10).
+
+### 🧩 Expand Tasks
+
+- `expand_task` = generate subtasks
+- Add `--force` to clear old subtasks
+- Add `--research` to enhance with AI context
+- Customize with `--prompt="..."` or `--num=4`
+
+### 🔁 Implementation Drift
+
+- If execution differs from plan, run:
+
+```bash
+task-master update --from=6 --prompt="Real context + deviation log..."
+task-master update-task --id=5.2 --prompt="Details..."
+```
+
+> Helps downstream tasks reflect real progress
+
+---
+
+## ✍️ Subtask Logging
+
+### 📖 Logging Iterations
+
+Use this pattern to enrich subtask memory:
+
+```bash
+task-master update-subtask --id=4.1 --prompt="
+✅ What worked...
+❌ What didn’t...
+💡 Code snippets:
+"
+```
+
+- Add diffs, links, notes
+- Include Git references or file paths
+- Treat each subtask like a growing changelog
+
+See: `@self_improve.mdc`
+
+---
+
+## 🔄 Status Codes
+
+```txt
+pending      = ready to be picked
+in-progress  = actively being implemented
+done         = fully implemented & tested
+deferred     = paused / deprioritized
+```
+
+> Add custom status codes in `config.json` if needed
+
+---
+
+## ⚙️ Configuration Rules
+
+| File                | Purpose                                |
+|---------------------|----------------------------------------|
+| `.taskmaster/config.json` | AI models, temperature, defaults         |
+| `.cursor/mcp.json`        | API keys for MCP + environment         |
+| `.env`                    | API keys for CLI fallback             |
+
+> Do not mix model config and API keys
+
+---
+
+## 🧩 Dependency Control
+
+```bash
+task-master add-dependency --id=5 --depends-on=2
+task-master remove-dependency --id=5 --depends-on=1.1
+```
+
+Validate/fix:
+```bash
+task-master validate-dependencies
+task-master fix-dependencies
+```
+
+---
+
+## 🔃 Moving Tasks
+
+Use `move_task` to adjust hierarchy:
+
+```bash
+task-master move --from=5.2 --to=7.1
+```
+
+Supports:
+- Reparenting subtasks
+- Reordering
+- Placeholder ID creation
+- Bulk moves
+
+See: `@taskmaster.mdc`
+
+---
+
+## 🧪 Final Steps per Task
+
+1. `update_subtask` → implementation log
+2. `set-status --id=... --status=done`
+3. Git commit (see `@formatting.mdc`)
+4. Move to next task with `task-master next`
+
+---
+
+## 📚 References
+
+- `@taskmaster.mdc`
+- `@cursor_rules.mdc`
+- `@self_improve.mdc`
+- `@ui_styleguide.mdc`
+
+---
+
+*Version: 2025.6 – Cursor AI + MCP Optimized*
