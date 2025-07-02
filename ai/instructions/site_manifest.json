@@ -1,0 +1,98 @@
+{
+    "site_name": "ClickRevamp",
+    "theme": {
+      "mode": "dark",
+      "background": "black",
+      "accents": ["#d1ff00", "#c6ff52", "#00ffae"],
+      "effects": {
+        "cursorGlow": true,
+        "gridOverlay": true,
+        "backdropBlur": true,
+        "glassCardStyle": true
+      },
+      "typography": {
+        "fontFamily": "Inter, sans-serif",
+        "headingWeight": "extrabold",
+        "bodyWeight": "medium",
+        "gradientText": true
+      }
+    },
+    "stack": [
+      "Next.js App Router",
+      "TailwindCSS",
+      "Framer Motion",
+      "Lucide Icons",
+      "shadcn/ui",
+      "animate.css",
+      "magic-ui",
+      "Resend (for contact forms)"
+    ],
+    "structure": [
+      {
+        "section": "Header",
+        "elements": ["Logo", "NavLinks (Create, Revamp, Automate)", "Call to Action Button"],
+        "features": ["sticky", "glow border", "z-50 overlay"]
+      },
+      {
+        "section": "Hero",
+        "elements": [
+          "Main Headline (Conversion-Focused Sites That Convert)",
+          "Subheading",
+          "Primary CTA Button (Start Your Redesign)",
+          "Trusted logos (Stripe, Notion, etc.)"
+        ],
+        "effects": ["text gradient", "cursor-style glow on button", "fade-in animation"]
+      },
+      {
+        "section": "Features",
+        "title": "Why Choose ClickRevamp",
+        "cards": [
+          {
+            "title": "Lightning Fast",
+            "icon": "⚡",
+            "desc": "Sub-2s load speeds. No delays."
+          },
+          {
+            "title": "Custom Design",
+            "icon": "🎨",
+            "desc": "No templates. Tailored to convert."
+          },
+          {
+            "title": "Built to Convert",
+            "icon": "🧠",
+            "desc": "Psychology-based layouts."
+          }
+        ],
+        "cardStyle": "glass, hover glow, icons with gradient rings"
+      },
+      {
+        "section": "Testimonials",
+        "style": "modern glass cards with fading gradients and backdrops",
+        "effects": ["Framer Motion fade-in", "staggered layout", "green accent quote icons"]
+      },
+      {
+        "section": "Footer",
+        "elements": ["Site logo", "Quick links", "Socials", "Legal links"],
+        "style": "dark + soft shadows + green glow separator"
+      }
+    ],
+    "additional": {
+      "globalUX": {
+        "animations": "Framer Motion",
+        "interactions": "cursor-based glow / hover ring",
+        "glassMode": true,
+        "zStacking": true
+      },
+      "components": [
+        "SectionWrapper",
+        "GradientText",
+        "GlassCard",
+        "GlowingButton",
+        "AnimatedGrid"
+      ],
+      "responsive": true,
+      "a11y": true,
+      "seo": true
+    }
+  }
+  
