@@ -1,4 +1,3 @@
-import { Header } from '@/components/agency/Header'
 import { Hero } from '@/components/agency/Hero'
 import { Features } from '@/components/agency/Features'
 import { Process } from '@/components/agency/Process'
@@ -11,7 +10,6 @@ import { Footer } from '@/components/agency/Footer'
 export default function Home() {
   return (
     <>
-      <Header />
       <Hero />
       <Features />
       <Process />
