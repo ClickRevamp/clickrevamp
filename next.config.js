@@ -4,5 +4,4 @@ const nextConfig = {
   // SWC minification is enabled by default in Next.js 13+
 }
 
-module.exports = nextConfig
-  
+module.exports = nextConfig  

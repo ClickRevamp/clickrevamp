@@ -163,7 +163,6 @@ export const Testimonials = () => {
     </section>
   )
 }
-
 interface TestimonialCardProps {
   testimonial: typeof testimonials[0]
   isCenter?: boolean
