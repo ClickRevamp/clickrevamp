@@ -4,6 +4,7 @@ import { useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ArrowRight, Sparkles } from 'lucide-react'
 import { WordRotate } from "@/components/ui/word-rotate"
+import { PrimaryCTA } from '@/components/cta/PrimaryCTA'
 
 // Animation variants
 const container = { 
@@ -101,20 +102,7 @@ export const Hero = () => {
             variants={prefersReducedMotion ? {} : up}
             className="mb-20"
           >
-            <motion.button
-              whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
-              whileTap={prefersReducedMotion ? {} : { scale: 0.98 }}
-              className="relative px-8 py-4 text-lg font-semibold bg-gradient-to-r from-[#d4ff3f] to-[#00ff95] text-black rounded-full hover:shadow-2xl hover:shadow-[#d4ff3f]/30 transition-all duration-300 border-0 overflow-hidden group cursor-pointer"
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                <span className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-black" />
-                  Start Your Redesign
-                </span>
-                <ArrowRight className="w-5 h-5 text-black" />
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-[#e6ff00] to-[#00ffae] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </motion.button>
+            <PrimaryCTA size="lg" />
           </motion.div>
 
           {/* Trusted by Leading Companies */}

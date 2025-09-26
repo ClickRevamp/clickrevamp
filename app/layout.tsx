@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/site/Header'
+import { LeadWizardProvider } from '@/components/providers/LeadWizardProvider'
+import { LeadWizard } from '@/components/wizard/LeadWizard'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,10 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={inter.className}>
-        <Header />
-        <main className="min-h-screen">
-          {children}
-        </main>
+        <LeadWizardProvider>
+          <Header />
+          <main className="min-h-screen">
+            {children}
+          </main>
+          <LeadWizard />
+        </LeadWizardProvider>
       </body>
     </html>
   )
