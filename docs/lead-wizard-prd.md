@@ -31,7 +31,7 @@ Transform the Hero CTA into a **universal lead wizard** that qualifies prospects
 ## 🔄 Flow Map
 
 Hero CTA → Open Modal/Sheet →  
-1. Path (New Website / Revamp + URL)  
+1. Path (New Website / Revamp + URL)   
 2. Goals (multi-select outcomes)  
 3. Scope (pages + features)  
 4. Brand & Content (ready / need help)  
